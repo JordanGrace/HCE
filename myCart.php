@@ -19,6 +19,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="js/cart.js"></script>
 </head>
 
 <body>
@@ -42,15 +43,16 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
 	<div id="cartWrap">
 		<legend>My Cart</legend>
         <div id="cart">
-        <form action="process/article_process.php" name="contactForm" method="post" enctype="multipart/form-data" class="cart_form" onSubmit="return validateForm()">
+        
         
 			<?php 
             if(isset($_SESSION['cartName'])){
                 for($i = 0; $i < count($_SESSION['cartName']); $i++){
-                    echo "<div class='cartItems'><div class='cName'>".$_SESSION['cartName'][$i]."</div><div class='cPrice'>$".$_SESSION['cartPrice'][$i]."</div><div class='cQuantity'>Quantity: <input type='text' maxlength='2' value=".$_SESSION['quantity'][$i]."></div><div class='delete'></div></div>";
+                    echo "<div class='cartItems'><div class='cName'>".$_SESSION['cartName'][$i]."</div><div class='cPrice'>$".$_SESSION['cartPrice'][$i]."</div><div class='cQuantity'>Quantity: <input type='text' maxlength='2' value=".$_SESSION['quantity'][$i]."></div><form action='process/deleteCartProcess.php' class='ajaxDel'><input name='arrayNum' type='hidden' value='".$_SESSION['itemId'][$i]."'/><input class='delete' type='submit' value='X'/></form></div>";
                 }
             }
             ?></br>
+            <form action="process/article_process.php" name="contactForm" method="post" enctype="multipart/form-data" class="cart_form" onSubmit="return validateForm()">
             <input type="submit" value="Checkout"/>
             </form>
         </div>

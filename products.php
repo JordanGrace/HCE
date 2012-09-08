@@ -139,6 +139,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
 <input type='hidden' name='tieName' value='$tName'>
 <input type='hidden' name='tiePrice' value='$tPrice'>
 <input type='hidden' name='tieQuantity' value='1'>
+<input type='hidden' name='tieId' value='$cid'>
 <input type='submit' class='info' id='saveBtn' value='Add to Cart'>
 </form>			</div>
 			</div>
