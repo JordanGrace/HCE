@@ -2,7 +2,7 @@
 
 body{margin:0px;
 
-background:url(../dark_wall.png);}
+background:url(../images/dark_wall.png);}
 
 #wrapperHeader{
 	background:url(../images/redox_01.png);
@@ -59,7 +59,7 @@ background:url(../dark_wall.png);}
     border-bottom:1px solid #fff;
     border-top:1px solid #d9d9d9;}
 	
-#contact label{
+#contact label, #checkWrap label{
 	font-family: 'FamiliarProBold';
 	float:left;
     clear:both;
@@ -74,7 +74,7 @@ background:url(../dark_wall.png);}
     -webkit-box-shadow:0px 0px 3px #aaa;
     box-shadow:0px 0px 3px #aaa;
 	}
-#contact p{
+#contact p, #checkWrap p{
 	float:left;
     clear:both;
     margin:0px 0px 20px 0px;
@@ -115,7 +115,18 @@ background:url(../dark_wall.png);}
     float:left;
 	width:300px;
 margin:0px 0px 10px 0px;}
-
+.contact_form select{
+ background: #ffffff;
+    border: 1px solid #ddd;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    outline: none;
+    padding: 5px;
+    float:left;
+	width:310px;
+margin:0px 0px 10px 0px;
+color: #979797;}
 
  .contact_form input[type="text"]:focus,
 .contact_form input[type="password"]:focus{ -moz-box-shadow:0px 0px 3px #aaa;
@@ -139,7 +150,7 @@ margin:0px 0px 10px 0px;}
     padding: 5px;
     float:left;}
 
-.contact_form input[type="submit"], .cart_form input[type="submit"]{
+.contact_form input[type="submit"], .cart_form input[type="submit"], .buttonStyle{
 	border:none;
     outline:none;
     -moz-border-radius: 10px;
@@ -160,12 +171,30 @@ margin:0px 0px 10px 0px;}
     box-shadow:0px 0px 3px #aaa;
     background:#de1b1b;}
 	
-	.contact_form input[type="submit"]:hover, .cart_form input[type="submit"]:hover{
+	.contact_form input[type="submit"]:hover, .cart_form input[type="submit"]:hover, .buttonStyle:hover{
 	  background:#f6f6f6;
     color:#de1b1b;
     text-shadow:1px 1px 1px #fff;
 }
-
+input[type="checkbox"]{width:20px;}
+#expire{width:120px; margin:0 auto;display:block;}
+#month{width:50px;}
+#year{width:70px;}
+.card{
+display:block;
+width:73px;
+height:46px;
+float:left;
+margin:0 2.2px;
+cursor:pointer;}
+#discover{background:url(../images/discoverCard.jpg);}
+#visa{background:url(../images/visaCard.jpg);}
+#master{background:url(../images/mcCard.jpg);}
+#american{background:url(../images/aeCard.jpg);}
+.selected{
+-webkit-box-shadow: 1px 1px 5px rgba(222, 27, 27, 1);
+-moz-box-shadow:    1px 1px 5px rgba(222, 27, 27, 1);
+box-shadow:         1px 1px 5px rgba(222, 27, 27, 1);}
 .grow{	
 	max-height:150px;
 	height:150px !important;
@@ -232,19 +261,19 @@ font-size:30px;
 	background:url(../images/redox_01.png);
 	height:150px;
 	border-top:#2b2b2b double 3px;
-postion:absolute;
-bottom:0;}
+	postion:absolute;
+	bottom:0;}
 
 
 #messageWrap{
     width:520px;
 	}
 #messageWrap legend{width:590px;}
-#cartWrap legend{width:960px;}
-#cartWrap{width:960px;}
+#cartWrap legend, #checkWrap legend{width:960px;}
+#cartWrap, #checkWrap{width:960px;}
 .contactWrap{width: 450px; margin:20px auto;}
 
-#messageWrap, #cartWrap{
+#messageWrap, #cartWrap, #checkWrap{
 	overflow:hidden;
 	margin:20px auto;
 	padding:0 0 20px 0;
@@ -257,7 +286,7 @@ bottom:0;}
     border:2px solid #fff;
     background-color:#f9f9f9;
 	}
-#messageWrap legend, #cartWrap legend{
+#messageWrap legend, #cartWrap legend, #checkWrap legend{
 	overflow:hidden;
 	font-family: 'FamiliarProBold';
 	text-align:left;
@@ -346,7 +375,6 @@ text-align:left;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    color: #f6f6f6;
     display: block;
     cursor:pointer;
     margin: 50px 190px 10px 0px;
@@ -359,13 +387,13 @@ text-align:left;
     -moz-box-shadow:0px 0px 3px #aaa;
     -webkit-box-shadow:0px 0px 3px #aaa;
     box-shadow:0px 0px 3px #aaa;
-	 background:#f6f6f6;
-    color:#de1b1b;}
+
+	 background:#de1b1b;
+    color:#f6f6f6;}
 	
 	.detail_form input[type="submit"]:hover{
-	  background:#de1b1b;
-    color:#f6f6f6;
-    text-shadow:1px 1px 1px #fff;
+	 	 background:#f6f6f6;
+    color:#de1b1b;
 }
 
 #detailImage{
@@ -574,16 +602,34 @@ box-shadow:         0px 0px 8px rgba(0, 0, 0, 0.25);
     border:1px solid #fff;
     padding:10px;overflow:hidden;
 	}
-.delete{background:#F00;
-width:32px;
-height:32px;
-float:left;
-margin:0 0 0 60px;}
+.delete{
+	background:#DE1B1B;
+	width:32px;
+	height:32px;
+	float:left;
+	margin:0 0 0 60px;
+	color:white;
+	font-weight:bold;
+	font-family: 'FamiliarProBold';
+	border-radius: 10px; 
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px;
+	cursor:pointer;
+	border:none;
+}
+.delete:hover{
+	 background:#f6f6f6;
+    color:#de1b1b;
+    -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+-moz-box-shadow:    0px 0px 2px rgba(0, 0, 0, .6);
+box-shadow:         0px 0px 2px rgba(0, 0, 0, .6);
+	}
 #cart{width:900px;margin:0 auto;}
 #cart .cName{width:400px;float:left;margin:5px 0 0 40px;}
 #cart .cQuantity{width:100px;float:left;margin:5px 0 0 70px;}
 #cart .cQuantity input[type="text"]{width:15px;text-align:center;}
 #cart .cPrice{width:100px;float:left;margin:5px 0 0 0;}
+#cart .noItem{margin:2.5px auto;text-align:center;}
 /*---------Home Hover Ad---------*/
 
 .adItem img {
@@ -692,9 +738,28 @@ margin:0 0 0 60px;}
    border:none;
 }
 
+#paypalCheck{float:left;
+width: 50%;
+overflow: hidden;
+}
+#paypalForm{
+	width:487px;
+	border-right:#CCC solid 2px;
+}
+#hceCheck{float:right;
+width: 50%;
+overflow: hidden;}
+#hceForm{
+	width:478px;
+	border-left:#CCC solid 2px;
+}
+
+
 #footerInfo{
 width:960px;
-margin:0px auto;
+color:#999;
+margin:10px auto 0;
+text-align:center;
 }
 
 #footerInfo p{

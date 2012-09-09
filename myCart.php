@@ -46,13 +46,16 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
         
         
 			<?php 
+			
             if(isset($_SESSION['cartName'])){
+				if(count($_SESSION['cartName']) === 0){ echo "<div class='cartItems'><p class='noItem'>You have no Items in your Cart</p></div>";}
                 for($i = 0; $i < count($_SESSION['cartName']); $i++){
                     echo "<div class='cartItems'><div class='cName'>".$_SESSION['cartName'][$i]."</div><div class='cPrice'>$".$_SESSION['cartPrice'][$i]."</div><div class='cQuantity'>Quantity: <input type='text' maxlength='2' value=".$_SESSION['quantity'][$i]."></div><form action='process/deleteCartProcess.php' class='ajaxDel'><input name='arrayNum' type='hidden' value='".$_SESSION['itemId'][$i]."'/><input class='delete' type='submit' value='X'/></form></div>";
                 }
             }
+			else{ echo "<div class='cartItems'><p class='noItem'>You have no Items in your Cart</p></div>";}
             ?></br>
-            <form action="process/article_process.php" name="contactForm" method="post" enctype="multipart/form-data" class="cart_form" onSubmit="return validateForm()">
+            <form action="checkout.php" method="post" enctype="multipart/form-data" class="cart_form">
             <input type="submit" value="Checkout"/>
             </form>
         </div>
@@ -66,12 +69,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
 		if($_SESSION['privilege']=='admin'){
 		echo '<a href="process/logout_process.php">Admin Logout</a>';}}
 		else{echo '<a href="adminLog.php">Admin Login</a>';} ?>
-        <a href="process/logout_process.php">Refresh</a>
   </div><!--Closes FooterInfo-->
-
-
-
-
 </div><!--Closes Footer-->
 </body>
 </html>
