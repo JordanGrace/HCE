@@ -2,10 +2,14 @@
 session_start();
 //brings code from a include file
 include('includes/function_con.inc');
-//runs the function inside the include
-//creates a value for the id
 
-if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else{$tieNumber = 0;}
+$tieNumber = 0;
+
+if(isset($_SESSION['cartName'])){
+	for($i = 0; $i < count($_SESSION['cartName']); $i++){
+		$tieNumber += $_SESSION['quantity'][$i];
+	}
+}else{$tieNumber = 0;}
 ?>
 <!doctype html>
 <html>
@@ -15,6 +19,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="fonts/familiar-pro-fontfacekit/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script src="js/script.js"></script>

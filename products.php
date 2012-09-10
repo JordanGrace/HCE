@@ -20,7 +20,13 @@ if(isset($_GET['spStyle'])){
 	$results = connect_to_query("SELECT * FROM ties_table WHERE style = '$sStyle' ORDER BY $sortTie");}
 	
 	
-if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else{$tieNumber = 0;}
+$tieNumber = 0;
+
+if(isset($_SESSION['cartName'])){
+	for($i = 0; $i < count($_SESSION['cartName']); $i++){
+		$tieNumber += $_SESSION['quantity'][$i];
+	}
+}else{$tieNumber = 0;}
 ?>
 <!doctype html>
 <html>
@@ -31,6 +37,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
 <link rel="stylesheet" type="text/css" href="fonts/familiar-pro-fontfacekit/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/styleAccordian.css" />
+<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 <noscript>
 			<style>
 				.st-accordion ul li{

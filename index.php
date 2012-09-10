@@ -2,7 +2,13 @@
 session_start();
 //brings code from a include file
 include('includes/function_con.inc');
-if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else{$tieNumber = 0;}
+$tieNumber = 0;
+
+if(isset($_SESSION['cartName'])){
+	for($i = 0; $i < count($_SESSION['cartName']); $i++){
+		$tieNumber += $_SESSION['quantity'][$i];
+	}
+}else{$tieNumber = 0;}
 ?>
 <!doctype html>
 <html>
@@ -13,6 +19,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/style2.css">
+<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 <script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
 		<link href='http://fonts.googleapis.com/css?family=Economica:700,400italic' rel='stylesheet' type='text/css'>
 		<noscript>
@@ -41,26 +48,20 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
 				<div class="da-slide">
 					<h2>New Career? or Just Graduated?</h2>
 					<p>Check out the deals we have this month on ties just for your new career.</p>
-					<a href="#" class="da-link">Read more</a>
+					
 					<div class="da-img"><img src="images/man.png" alt="image01" /></div>
 				</div>
 				<div class="da-slide">
 					<h2>Looking for some ties that fit your style?</h2>
 					<p>Check out the different styles of ties in store for you!</p>
-					<a href="#" class="da-link">Read more</a>
+					
 					<div class="da-img"><img src="images/tie.png" alt="image01" /></div>
 				</div>
 				<div class="da-slide">
-					<h2>Lorem ipsum dolor</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt volutpat nisi id fringilla. Aliquam dapibus, felis a semper iaculis, eros neque dictum nibh, eget egestas lacus nunc eu ante.</p>
-					<a href="#" class="da-link">Read more</a>
-					<div class="da-img"><img src="images/1.png" alt="image01" /></div>
-				</div>
-				<div class="da-slide">
-					<h2>Lorem ipsum dolor</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt volutpat nisi id fringilla. Aliquam dapibus, felis a semper iaculis, eros neque dictum nibh, eget egestas lacus nunc eu ante..</p>
-					<a href="#" class="da-link">Read more</a>
-					<div class="da-img"><img src="images/4.png" alt="image01" /></div>
+					<h2>Need new Ties?</h2>
+					<p>You came just in time for the Holiday Sale...20% off all new Ties!</p>
+					
+					<div class="da-img"><img src="images/redTie.png" alt="image01" /></div>
 				</div>
 				<nav class="da-arrows">
 					<span class="da-arrows-prev"></span>
@@ -76,7 +77,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
                     <div class="mask">
                         <h2>Father's Day Weekend</h2>
                         <p></p>
-                        <a href="#" class="info">Read More</a>
+                        <a href="products.php" class="info">See More</a>
                     </div>
         </div><!--Closes Item1-->
     	<div class="item2 adItem">
@@ -84,7 +85,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
                     <div class="mask">
                         <h2>Grad Sell</h2>
                         <p></p>
-                        <a href="#" class="info">Read More</a>
+                        <a href="products.php" class="info">See More</a>
                     </div>
         </div><!--Closes Item1-->
 	    	<div class="item2 adItem">
@@ -92,7 +93,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
                     <div class="mask">
                         <h2>Need More Ties?</h2>
                         <p></p>
-                        <a href="#" class="info">Read More</a>
+                        <a href="products.php" class="info">See More</a>
                     </div>
         </div><!--Closes Item1-->
 	    	<div class="item2 adItem">
@@ -100,7 +101,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
                     <div class="mask">
                         <h2>Just got a job?</h2>
                         <p></p>
-                        <a href="#" class="info">Read More</a>
+                        <a href="products.php" class="info">See More</a>
                     </div>
         </div><!--Closes Item1-->
     </div><!--Closes ItemArea-->

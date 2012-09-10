@@ -228,6 +228,9 @@ font-weight:normal;
 text-decoration:none;
 font-size:30px;
 	}
+#nav a:hover{
+text-decoration:underline;
+	}
 .sep{
 	border-left:#2b2b2b solid 2px;
 	margin:0px 7px 0px 10px;
@@ -247,7 +250,7 @@ font-size:30px;
 	width:750px;}
 #itemArea{
 	margin:20px 0px;
-	background:#00F;
+	overflow:hidden;
 	width:1000px;}
 .adItem{
 	float:left;
@@ -264,7 +267,7 @@ font-size:30px;
 	postion:absolute;
 	bottom:0;}
 
-
+#total{width:890px !important;}
 #messageWrap{
     width:520px;
 	}
@@ -603,6 +606,7 @@ box-shadow:         0px 0px 8px rgba(0, 0, 0, 0.25);
     padding:10px;overflow:hidden;
 	}
 .delete{
+	font-size: 18px;
 	background:#DE1B1B;
 	width:32px;
 	height:32px;

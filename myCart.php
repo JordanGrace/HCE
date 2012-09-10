@@ -2,12 +2,15 @@
 session_start();
 //brings code from a include file
 include('includes/function_con.inc');
+$tieNumber = 0;
+$totalPrice = 0.00;
 
-//make a var that represents the path to the XML data
-$fileDir = "xml/";
-//open a connection to the folder full of XML files
-$handle = opendir($fileDir);
-if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else{$tieNumber = 0;}
+if(isset($_SESSION['cartName'])){
+	for($i = 0; $i < count($_SESSION['cartName']); $i++){
+		$tieNumber += $_SESSION['quantity'][$i];
+		$totalPrice += ($_SESSION['cartPrice'][$i] * $_SESSION['quantity'][$i]);
+	}
+}else{$tieNumber = 0;}
 ?>
 <!doctype html>
 <html>
@@ -17,6 +20,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="fonts/familiar-pro-fontfacekit/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script src="js/cart.js"></script>
@@ -52,12 +56,17 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
                 for($i = 0; $i < count($_SESSION['cartName']); $i++){
                     echo "<div class='cartItems'><div class='cName'>".$_SESSION['cartName'][$i]."</div><div class='cPrice'>$".$_SESSION['cartPrice'][$i]."</div><div class='cQuantity'>Quantity: <input type='text' maxlength='2' value=".$_SESSION['quantity'][$i]."></div><form action='process/deleteCartProcess.php' class='ajaxDel'><input name='arrayNum' type='hidden' value='".$_SESSION['itemId'][$i]."'/><input class='delete' type='submit' value='X'/></form></div>";
                 }
+				if(count($_SESSION['cartName']) > 0){echo"<legend id='total'>Total: $$totalPrice</legend>";}
             }
 			else{ echo "<div class='cartItems'><p class='noItem'>You have no Items in your Cart</p></div>";}
             ?></br>
+           
+			
             <form action="checkout.php" method="post" enctype="multipart/form-data" class="cart_form">
-            <input type="submit" value="Checkout"/>
+            <?php if(isset($_SESSION['cartName'])){if(count($_SESSION['cartName']) > 0){echo"<input type='submit' value='Checkout'/>";}
+			else {echo "<input type='button' class='buttonStyle' value='Checkout' style='opacity:0.5;'/>";}}else{echo "<input type='button' class='buttonStyle' value='Checkout' style='opacity:0.5;'/>";} ?>
             </form>
+			
         </div>
         
 	</div><!--Closes CartWrap--> 

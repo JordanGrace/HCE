@@ -6,8 +6,7 @@
 	margin: 0px auto;
 	overflow: hidden;
 	background: transparent url(../images/echeveria.gif) repeat 0% 0%;
-	border-top: 10px solid #DE1B1B;
-	border-bottom: 8px solid #DE1B1B;
+	border-bottom:5px solid #721111;
 	
 	-webkit-transition: background-position 1s ease-out 0.3s;
 	-moz-transition: background-position 1s ease-out 0.3s;
@@ -51,9 +50,24 @@
 	left: 60%;
 	opacity: 1;
 }
+@media (min-width:1500px){
+	.da-slide h2{font-size: 66px;}
+}
+@media (max-width:1480px){
+	.da-slide h2{font-size: 55px;}
+}
+@media (max-width:1240px){
+	.da-slide h2{font-size: 50px;}
+}
+@media (max-width:1150px){
+	.da-slide h2{font-size: 45px;}
+}
+@media (max-width:1035px){
+	.da-slide h2{font-size: 40px;}
+}
+
 .da-slide h2{
 	color: #333;
-	font-size: 66px;
 	width: 50%;
 	white-space: nowrap;
 	z-index: 10;

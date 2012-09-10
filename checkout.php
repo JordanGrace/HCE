@@ -3,11 +3,13 @@ session_start();
 //brings code from a include file
 include('includes/function_con.inc');
 
-//make a var that represents the path to the XML data
-$fileDir = "xml/";
-//open a connection to the folder full of XML files
-$handle = opendir($fileDir);
-if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else{$tieNumber = 0;}
+$tieNumber = 0;
+
+if(isset($_SESSION['cartName'])){
+	for($i = 0; $i < count($_SESSION['cartName']); $i++){
+		$tieNumber += $_SESSION['quantity'][$i];
+	}
+}else{$tieNumber = 0;}
 ?>
 <!doctype html>
 <html>
@@ -17,6 +19,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="fonts/familiar-pro-fontfacekit/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script src="js/cart.js"></script>
@@ -51,7 +54,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
                 <label for="pBox">Password</label>
                 <p><input id="pBox" type="password" name="pBox"/></p>
             
-            <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"  style=" width: 145px; margin: 0 auto; display: block; cursor:pointer; ">
+            <a href="process/checkoutProcess.php"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"  style=" width: 145px; margin: 0 auto; display: block; cursor:pointer; "></a>
             </form>
             </div>
         </div><!--Closes Paypal Checkout-->
@@ -77,7 +80,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
                         
                         <label for="state_picked">State<a class="redStar">*</a></label>
                         <p>
-                            <select name="state_picked">
+                            <select id="stateBox" name="state_picked">
                                 <option value="">None
                                 <option value="AL">Alabama
                                 <option value="AK">Alaska
@@ -153,7 +156,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
                         
                         <label for="state_picked2">State<a class="redStar">*</a></label>
                         <p>
-                            <select name="state_picked2">
+                            <select id="stateBox2" name="state_picked2">
                                 <option value="">None
                                 <option value="AL">Alabama
                                 <option value="AK">Alaska
@@ -254,7 +257,7 @@ if(isset($_SESSION['cartName'])){$tieNumber = count($_SESSION['cartName']);}else
                                 <option value="2022">2022
                         	</select></span>
                       </p>  
-                    <input type="submit" class="buttonStyle" value="CheckOut"/>
+                    <input type="submit" class="buttonStyle submit" value="CheckOut"/>
                     </div><!--Closes Part2-->
            		</form>
             </div><!--Closes Hce Form-->
